@@ -2,7 +2,7 @@
 Tool to identify web-domains which are alive and generate favicon hash
 
 Requirements:
-subprocess , requests, mmh3, codecs, argparse
+subprocess, requests, mmh3, codecs, argparse
 
 subfinder:
 $ sudo apt install subfinder
