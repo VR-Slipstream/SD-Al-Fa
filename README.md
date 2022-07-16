@@ -1,11 +1,16 @@
 # SD-Al-Fa
 Tool to identify web-domains which are alive and generate favicon hash
 
-Required modules:
+Requirements:
 subprocess , requests, mmh3, codecs, argparse
-install them individually using pip
+
+subfinder:
+$ sudo apt install subfinder
 
 or
+
+$ go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
+
 
 $ pip install -r requirements.txt
 
