@@ -1,16 +1,16 @@
 import subprocess as sp, requests, mmh3, codecs, argparse
 
-parser = argparse.ArgumentParser(description="Alive or not Tool")
+parser = argparse.ArgumentParser(description="Get Subdomains, subdomains which are alive and their favicon Hashes")
 parser.add_argument("-d", type=str, help="Resolve DNS", required=True)
-parser.add_argument("-s", type=str, help="Output subdomains", required=False)
-parser.add_argument("-status", type=str, help="Output with status codes", required=False)
-parser.add_argument("-fh", type=str, help="Output with Favicon Hashes", required=False)
+parser.add_argument("-s", type=str, help="Output subdomains", required=True)
+parser.add_argument("-status", type=str, help="Output with status codes", required=True)
+parser.add_argument("-fh", type=str, help="Output with Favicon Hashes", required=True)
 b = parser.parse_args()
 
 if b.d:
     subs = sp.getoutput("subfinder -d " + b.d + " -silent")
     print(subs)
-if b.subs:
+if b.s:
     f = open(b.s, "w")
     f.write(subs)
     f.close()
@@ -23,12 +23,12 @@ if b.status:
     for subdomain in subdomains:
         try:
             h = "https://" + subdomain.strip()
-            h_status_code = requests.get(h, hd, timeout=10).status_code
+            h_status_code = requests.get(h, headers=hd, timeout=10).status_code
             g = "http://" + subdomain.strip()
-            g_status_code = requests.get(g, hd, timeout=10).status_code
+            g_status_code = requests.get(g, headers=hd, timeout=10).status_code
             print(h, "[" + h_status_code + "]")
             print(g, "[" + g_status_code + "]")
-            if int(h_status_code) == 2001:
+            if int(h_status_code) == 200:
                 f.write(h + " " + "[200]\n")
             elif int(g_status_code) == 200:
                 f.write(g + " " + "[200]\n")
