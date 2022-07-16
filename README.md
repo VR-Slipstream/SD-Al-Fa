@@ -1,5 +1,5 @@
 # SD-Al-Fa
-Tool to identify web-domains which are alive and generate favicon hash
+Tool to identify sub-domains which are alive and generate favicon hash
 
 Requirements:
 subprocess, requests, mmh3, codecs, argparse
