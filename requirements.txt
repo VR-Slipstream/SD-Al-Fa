@@ -1,0 +1,5 @@
+subprocess
+requests
+mmh3
+codecs
+argparse
